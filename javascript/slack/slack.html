@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+
+    <!--bootstrap includes-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!--bootstrap includes end-->
+
+    <!--pathfix code-->
+    <script src="https://labs.pathfix.com/helper.js" data-user-id="john@enduser.com" data-client-id="<pinc_client_id>" id="pinc.helper" modules="popups,modals,oauth"></script>
+    <!--pathfix code end--->
+
+    <style>
+        .icon-xl, .icon-lg, .icon-md, .icon {
+            background-position: center center;
+            background-repeat: no-repeat;
+            display: inline-block;
+        }
+
+        .icon-xl {
+            width: 8rem;
+            height: 8rem;
+            background-size: 8rem 8rem;
+            line-height: 8rem;
+        }
+
+        .icon-lg {
+            width: 4rem;
+            height: 4rem;
+            background-size: 4em 4em;
+        }
+
+        .icon-md {
+            width: 2em;
+            height: 2em;
+            background-size: 2em 2em;
+        }
+
+        .icon {
+            width: 1em;
+            height: 1em;
+            background-size: 1em 1em;
+        }
+    </style>
+
+    <script src="slack.js"></script>
+
+</head>
+<body>
+    <div class="container border rounded my-2 p-3">
+        <h2>Integrations page</h2>
+        <button data-oauth-command="slack.call" class="btn btn-outline-primary">
+            <i class="icon" style="background-image:url('https://app.pathfix.com/i/slack-icon.png')"></i>
+            Integrate with Slack
+        </button>
+    </div>
+
+    <div class="container border rounded my-4 p-3">
+        <h5>Javascript demonstration to send a message to Slack through PathFix Servers</h5>
+
+        <button onclick="pushSlackMessage()" class="btn btn-success">Send Message</button>
+        <button onclick="getChannelList()" class="btn btn-success">Get Channels List</button>
+
+        <div class="d-flex">
+            <small class="code">
+                <pre id="request"></pre>
+                <pre id="response"></pre>
+            </small>
+        </div>
+    </div>
+
+</body>
+</html>

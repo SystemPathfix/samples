@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -17,49 +17,28 @@
     <!--helper.js-->
     <script src="https://labs.pathfix.com/helper.js" id="pinc.helper" modules="oauth,popups,modals,attach" data-client-id="<pinc_client_id>"></script>
 
+    <script src="../credentials.js"></script>
+    <script src=".googleidentity.js"></script>
+
+
     <script>
 
         var constants = {
-            provider: "googleidentity",
-            pincClientId: "<pinc_client_id>"
+            provider: "googleidentity"
         }
 
         function init() {
             //attach to the pathfix.oauth ready event
-            $pinc.events.on("$pinc.oauth", "ready", checkGoogleLogin, true)
+            $pinc.events.on("$pinc.oauth", "ready", checkLoginState, true)
         }
 
-        function checkGoogleLogin() {
-            //check if the user has previously authorized. This does not provider the user information parameter so it looks in the cache
-            //for a previous authorization using this provider
-            $pinc.oauth.authorized(constants.provider, null, function (authorized) {
-                if (authorized) {
-                    var url = $pinc.getPathfixUrl(constants.provider, constants.pincClientId, null);
-                    url.searchParams.set("oauthId", $pinc.oauth.getOauthId(constants.provider).id);
-                    //leave the {{idtoken}} as it is. It will be replaced by pathfix if the user has already authorized.
-                    var payload = {
-                        "url": "https://oauth2.googleapis.com/tokeninfo?id_token={{id_token}}",
-                        "method": "GET",
-                        "payload": {}
-                    }
-                    $.post(url, JSON.stringify(payload)).always(_connected);
+        function checkLoginState() {
+            googleIdentityProvider.autoLogin(_connected);
+        }
 
-                }
-                else {
-                    //do not authorized action
-                }
-            })
-
-            function _connected(response) {
-                var rows = (response.rows || [])[0];
-                console.log(rows.data);
-                if (rows.pincStatus != "error" && rows.data.email != null) {
-                    var googleReturnedData = rows.data;
-                    $(".card-body").html(`<h1>Hello ${googleReturnedData.email}</h1>`)
-                    rows.data.provider = provider;
-                }
-            }
-
+        function _connected(data) {
+            $(".card-body").html(`<h1>Hello ${googleReturnedData.email}</h1>`)
+            rows.data.provider = provider;
         }
     </script>
 </head>

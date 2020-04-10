@@ -3,7 +3,7 @@ var pfxClientId = "<pinc_client_id>";
 
 function __sendRequest(provider, payload) {
 
-    var url = $pinc.getPathfixUrl(provider);
+    var url = $pinc.getPathfixUrl(provider, pfxClientId);
 
     //add information needed to complete request
     url.searchParams.set("userId", loggedInUser);

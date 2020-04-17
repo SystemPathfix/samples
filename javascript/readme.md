@@ -1,1 +1,1 @@
-Replace the <pinc_client_id> with your actual client id from pathfix
+Replace the **<pinc_client_id>** with your actual client id from pathfix

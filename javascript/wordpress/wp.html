@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <!--helper.js-->
+    <script>
+        function callback() {
+            console.log($pinc.auth.profile)
+        }
+
+    </script>
+</head>
+<body>
+    <div style="width:500px;margin:auto">
+
+        <div style="width:500px;margin:auto">
+            <script src="https://labs.pathfix.com/helper.js" id="pinc.helper"
+                    modules="oauth,popups,modals,attach,auth,ui.auth"
+                    data-client-id="<replace with data-client-id>"
+                    data-ui-providers="google,github,fb"
+                    data-hello="<h2>Hello {{name}}</h2>"
+                    data-callback="callback()"
+                    >
+            </script>
+        </div>
+
+        <form>
+            <textarea rows="5" style="width:100%">
+
+        </textarea>
+            <textarea rows="10"style="width:100%">
+
+        </textarea>
+        </form>
+    </div>
+</body>

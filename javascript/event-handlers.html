@@ -10,8 +10,9 @@
 
     <title>Pathfix Sample</title>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-    <script src="https://labs.pathfix.com/helper.js" data-user-id="staging.pathfix.com_end_user_id" id="pinc.helper" modules="popups,modals,oauth" data-client-id="09F129C2-C090-466B-9484-729EE98B4FD1"></script>
+    <script src="https://labs.pathfix.com/helper.js" data-user-id="demo@pathfix.com" id="pinc.helper" modules="popups,modals,oauth" data-client-id="09F129C2-C090-466B-9484-729EE98B4FD1"></script>
     <script>
+        //make sure the events are attached post document ready
         $(document).ready(function () {
             //when the user consents
             $pinc.events.on("$pinc.oauth", "consented", consented, true)

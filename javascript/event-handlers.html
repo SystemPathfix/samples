@@ -1,0 +1,30 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+
+    <title>Pathfix Sample</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script src="https://labs.pathfix.com/helper.js" data-user-id="staging.pathfix.com_end_user_id" id="pinc.helper" modules="popups,modals,oauth" data-client-id="09F129C2-C090-466B-9484-729EE98B4FD1"></script>
+    <script>
+        $(document).ready(function () {
+            $pinc.events.on("$pinc.oauth","consented",zoomCallBack,true)
+        })
+
+        function zoomCallBack(data) {
+            console.log(data);
+        }
+    </script>
+
+</head>
+<body>
+    <h1>Hello</h1>
+    <!--renders a button for this integration that you can customize-->
+    <button data-oauth-command="googlemail.call">Integrate with Google Mail</button>
+</body>
+</html>
